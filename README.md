@@ -1,92 +1,71 @@
-# zappbuild
+# zAppBuild
+zAppBuild is a generic build solution for building z/OS applications using Apache Groovy build scripts and IBM Dependency Based Build (DBB) APIs.
 
+## Resources
+* [IBM Dependency Based Build Product Page](https://www.ibm.com/products/dependency-based-build)
+* [IBM DBB Knowledge Center](https://www.ibm.com/docs/en/dbb/1.1.0)
+* [IBM/dbb Repository](https://github.com/IBM/dbb/)
+* [IBM IDZ Community](https://community.ibm.com/community/user/ibmz-and-linuxone/groups/topic-home?CommunityKey=f461c55d-159c-4a94-b708-9f7fe11d972b)
+* [IBM DBB Community](https://community.ibm.com/community/user/ibmz-and-linuxone/groups/topic-home?CommunityKey=20c9b889-9450-4ab6-8f11-8a5eb2b3342d)
 
-
-## Getting started
-
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
-
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
-
-## Add your files
-
-- [ ] [Create](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
-- [ ] [Add files using the command line](https://docs.gitlab.com/ee/gitlab-basics/add-file.html#add-a-file-using-the-command-line) or push an existing Git repository with the following command:
-
-```
-cd existing_repo
-git remote add origin https://gitlab.com/valtsiq/zappbuild.git
-git branch -M main
-git push -uf origin main
-```
-
-## Integrate with your tools
-
-- [ ] [Set up project integrations](https://gitlab.com/valtsiq/zappbuild/-/settings/integrations)
-
-## Collaborate with your team
-
-- [ ] [Invite team members and collaborators](https://docs.gitlab.com/ee/user/project/members/)
-- [ ] [Create a new merge request](https://docs.gitlab.com/ee/user/project/merge_requests/creating_merge_requests.html)
-- [ ] [Automatically close issues from merge requests](https://docs.gitlab.com/ee/user/project/issues/managing_issues.html#closing-issues-automatically)
-- [ ] [Enable merge request approvals](https://docs.gitlab.com/ee/user/project/merge_requests/approvals/)
-- [ ] [Automatically merge when pipeline succeeds](https://docs.gitlab.com/ee/user/project/merge_requests/merge_when_pipeline_succeeds.html)
-
-## Test and Deploy
-
-Use the built-in continuous integration in GitLab.
-
-- [ ] [Get started with GitLab CI/CD](https://docs.gitlab.com/ee/ci/quick_start/index.html)
-- [ ] [Analyze your code for known vulnerabilities with Static Application Security Testing(SAST)](https://docs.gitlab.com/ee/user/application_security/sast/)
-- [ ] [Deploy to Kubernetes, Amazon EC2, or Amazon ECS using Auto Deploy](https://docs.gitlab.com/ee/topics/autodevops/requirements.html)
-- [ ] [Use pull-based deployments for improved Kubernetes management](https://docs.gitlab.com/ee/user/clusters/agent/)
-- [ ] [Set up protected environments](https://docs.gitlab.com/ee/ci/environments/protected_environments.html)
-
-***
-
-# Editing this README
-
-When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!). Thank you to [makeareadme.com](https://www.makeareadme.com/) for this template.
-
-## Suggestions for a good README
-Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
-
-## Name
-Choose a self-explaining name for your project.
-
-## Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
-
-## Badges
-On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
-
-## Visuals
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
-
-## Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
-
-## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
-
-## Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
-
-## Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
 
 ## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
+For instructions on how to contribute enhancements and bug fixes to zAppBuild, please read the [Contributions Guidelines](CONTRIBUTIONS.md).
 
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
+## How zAppBuild works
+The zAppBuild repository is intended to be cloned to a single location on Unix Systems Services (USS) and used to build all of your z/OS applications. This is done by simply copying the supplied `application-conf` folder (located in the [samples folder](samples)) to the application source repository you want to build and then verify/update the contained default configuration property values to ensure they meet the build requirements of your application. See the included [MortgageApplication](samples/MortgageApplication) sample for an example of an application that has been modified to be built by zAppBuild.  
 
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
+**IMPORTANT** : The [datasets.properties](build-conf/datasets.properties) must be configured for your build machine before executing a build!  See [build-conf/README.md](build-conf/README.md) for more information.
 
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
+## Supported Languages
+The zAppBuild sample provides the following *language* build scripts by default:
+* Assembler.groovy
+* BMS.groovy
+* Cobol.groovy
+* LinkEdit.groovy (for building link cards)
+* PLI.groovy
+* DBDgen.groovy
+* PSBgen.groovy
+* MFS.groovy
+* ZunitConfig.groovy
+* Transfer.groovy (for transport non-buildable files like JCL or PROC into build libraries and register them as build output)
 
-## License
-For open source projects, say how it is licensed.
+All language scripts both compile and optionally link-edit programs. The language build scripts are intended to be useful out of the box but depending on the complexity of your applications' build requirements, may require modifications to meet your development team's needs.  By following the examples used in the existing language build scripts of keeping all application specific references out of the build scripts and instead using configuration properties with strong default values, the zAppBuild sample can continue to be a generic build solution for all of your specific applications.
 
-## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
+## Build Scope
+The build scope of zAppBuild is an application which is loosely defined as one or more Git repositories containing all the z/OS source files required to build the application.  There are no specific rules as to the structure of the repositories except that one repository must contain the high level `application-conf` folder provided by zAppBuild which contains all of the configuration properties for building the application programs.  
+
+**NOTE:** All source repositories that make up the application must be cloned on the build machine under a common *workspace*  directory prior to calling build.groovy.
+
+zAppBuild supports a number of build scenarios:
+* **Single Program** - Build a single program in the application.
+* **List of Programs** - Build a list of programs provided by a text file.
+* **Full Build** - Build all programs (or buildable files) of an application.
+* **Impact Build** - Build only programs impacted by source files that have changed since the last successful build.
+* **Impact Build with baseline reference** - Build only programs impacted by source files that have changed by diff'ing to a previous configuration reference.
+* **Topic Branch Build** - Detects when building a topic branch for the first time and will automatically clone the dependency data collections from the main build branch in order to avoid having to rescan the entire application.
+* **Merge Build** - Build only changed programs which will be merged back into the mainBuildBranch by using a triple-dot git diff. 
+* **Scan Source** - Skip the actual building and only scan source files to store dependency data in collection (migration scenario).
+* **Scan Source + Outputs** - Skip the actual building and only scan source files and existing load modules to dependency data in source and output collection (migration scenario with static linkage scenarios).
+* **Build Preview** - Supplemental build option. Process all phases of the supplied build option, but will not execute the commands. A build report and a build result are generated with a specific status that excludes them in subsequent impact build calculations. 
+
+
+Instructions on invoking a zAppBuild is included in [docs/BUILD.md](docs/BUILD.md) as well as invocation samples for the above mentioned build scenarios including sample console logs.
+
+Application-level build properties such as compile and link options can be defined in various ways to set global defaults, application-level overrides or even file level (member-level) overrides. The various supported strategies are documented in [docs/FilePropertyManagement.md](docs/FilePropertyManagement.md).
+
+zAppBuild comes with a set of reporting features. It helps development teams to understand the impact of changed files across multiple applications. Another feature helps to identify conflicts due to concurrent development activities within their application. An overview of these features are documented in [docs/REPORTS.md](docs/REPORTS.md).
+
+Links to additional documentation is provided in the table below.  
+
+## Repository Legend
+Folder/File | Description | Documentation Link
+--- | --- | ---
+build-conf | This folder contains global configuration properties used by build.groovy and language build scripts. | [build-conf/README.md](build-conf/README.md)
+docs | This folder contains supplemental documentation to help explain the implementation and usage of zAppBuild features. | [docs/README.md](docs/README.md)
+languages | This folder contains the language specific build scripts that are associated to build files via script mappings (see `samples/application-conf/files.properties`) and called by build.groovy. | [languages/README.md](languages/README.md)
+samples/application-conf | The `application-conf` folder contains application specific configuration properties used by build.groovy and language build scripts.  It is intended to be copied as a high level folder to the application repository and configured to meet the build requirments of the application. Ex. `myAppRepository/application-conf` | [samples/application-conf/README.md](samples/application-conf/README.md)
+samples/MortgageApplication | This is an updated version of the original [MortgageApplication](https://github.com/IBM/dbb/tree/master/Build/MortgageApplication) sample designed to be built by zAppBuild. | [samples/MortgageApplication/README.md](samples/MortgageApplication/README.md)
+utilities | This folder contains utility scripts which provide common utility functions used by the various zAppBuild build scripts. | [utilities/README.md](utilities/README.md)
+build.groovy | This is the main build script that is called to start the build process. | [BUILD.md](BUILD.md)
+test | This folder contains testing framework for ZAppBuild which includes test scripts and related test content.| [test/README.md](/test/README.md)
